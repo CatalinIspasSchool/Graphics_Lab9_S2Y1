@@ -79,6 +79,13 @@ void Scene::initialiseOpenGL()
 	glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, 1);
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	// Blending function
+	
+	glEnable(GL_TEXTURE_2D);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	
+	thingy.Load("models/BED.obj", "models/BED.png");
+
+	//texture2Iguess = SOIL_load_OGL_texture("models/Drone_Diff.png", SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y);
 }
 
 // Handles the resize of the window. If the window changes size the perspective matrix requires re-calculation to match new window size.
@@ -168,85 +175,5 @@ void Scene::displayText(float x, float y, float r, float g, float b, char* strin
 
 void Scene::drawSeven()
 {
-	glPushMatrix();	//Sun
-		glColor3f(1, 1, 0);
-		glRotatef(time / 30, 0, 0, 1);
-		glTranslatef(7, 0, 0);
-
-		glutWireSphere(3, 20, 10);
-
-		glPushMatrix();	//Planet
-			glColor3f(0, 0, 1);
-			glRotatef(time / 20, 0, 0, 1);
-			glTranslatef(20, 0, 0);
-
-			glutWireSphere(1, 10, 7);
-
-			glPushMatrix();	//Moon1
-				glColor3f(0.4, 0.4, 0.4);
-				glRotatef(time / 5, 0, 0, 1);
-				glTranslatef(3, 0, 0);
-
-				glutWireSphere(0.4, 7, 5);
-			glPopMatrix();	//Moon1
-			glPushMatrix();	//Moon2
-				glColor3f(0.6, 0.6, 0.6);
-				glRotatef(time / 8, 0, 1, 0);
-				glTranslatef(4.5, 0, 0);
-				
-				glutWireSphere(0.3, 7, 5);
-			glPopMatrix();	//Moon2
-		glPopMatrix();	//Planet
-
-		
-		glPushMatrix();	//Planet2
-			glColor3f(1, 0, 0);
-			glRotatef(time / 6, 0, 0, 1);
-			glTranslatef(10, 0, 0);
-
-			glutWireSphere(0.9, 10, 7);
-
-			glPushMatrix();	//Moon1
-				glColor3f(0.4, 0.4, 0.4);
-				glRotatef(time / 3, 0, 0.3, 1);
-				glTranslatef(3, 0, 0);
-
-				glutWireSphere(0.4, 7, 5);
-
-				glPushMatrix();	//Moonception
-					glColor3f(0.2, 0.2, 0.2);
-					glRotatef(time / 5, 0, 0.3, 1);
-					glTranslatef(3, 0, 0);
-
-					glutWireSphere(0.2, 7, 5);
-
-				glPopMatrix();	//Moonception
-			glPopMatrix();	//Moon1
-			glPushMatrix();	//Moon2
-				glColor3f(0.6, 0.6, 0.6);
-				glRotatef(time / 5, 0, 1, 0.6);
-				glTranslatef(4.5, 0, 0);
-				
-				glutWireSphere(0.3, 7, 5);
-			glPopMatrix();	//Moon2
-		glPopMatrix();	//Planet2
-	glPopMatrix();	//Sun
-
-
-
-	//glPopMatrix();
-	//
-	//glPushMatrix();
-
-	//	//glRotatef(triangleRotation, 0, 0, 1);
-	//	glTranslatef(-1.5, 0, 0);
-	//	glScalef(2, 2, 1);
-
-	//	glBegin(GL_TRIANGLES);
-	//		glVertex3f(0, 0.5, 0);
-	//		glVertex3f(0.5, 0, 0);
-	//		glVertex3f(-0.5, 0, 0);
-	//	glEnd();
-
-	//glPopMatrix();
+	thingy.Render();
 }

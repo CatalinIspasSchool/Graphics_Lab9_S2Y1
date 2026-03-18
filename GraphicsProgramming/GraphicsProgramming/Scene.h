@@ -16,6 +16,7 @@
 #include "SOIL.h"
 #include <vector>
 #include "MyCamera.h"
+#include "Model.h"
 
 class Scene{
 
@@ -61,6 +62,10 @@ protected:
 	char fps[40];
 	char mouseText[40];
 
+
+	Model thingy;
+
+	GLuint texture2Iguess;
 };
 
 #endif

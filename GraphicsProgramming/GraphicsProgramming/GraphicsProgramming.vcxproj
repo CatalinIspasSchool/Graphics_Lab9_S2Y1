@@ -88,12 +88,14 @@
   <ItemGroup>
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="MyCamera.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="MyCamera.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Vector3.h" />
