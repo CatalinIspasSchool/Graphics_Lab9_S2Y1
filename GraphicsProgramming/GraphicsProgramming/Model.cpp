@@ -2,7 +2,7 @@
 #include "Model.h"
 #include <iostream>
 
-Model::Model() 
+Model::Model()
 {
 }
 Model::~Model()
@@ -21,26 +21,27 @@ void Model::Render()
 
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glPushMatrix();
-		glScalef(10, 10, 10);
-		glBegin(GL_TRIANGLES);
-			for (int i = 0; i < faces.size()-9; i+=9) //faces.size()
-			{
+	glScalef(10, 10, 10);
+	glBegin(GL_TRIANGLES);
+	for (int i = 0; i < faces.size() - 9; i += 9) //faces.size()
+	{
 
-				glNormal3f(normals[faces[i + 2] - 1].x, normals[faces[i + 2] - 1].y, normals[faces[i + 2] - 1].z);
-				glTexCoord2f(texcords[faces[i+1]-1].x, texcords[faces[i+1]-1].y);
-				glVertex3f(vertices[faces[i]-1].x, vertices[faces[i]-1].y, vertices[faces[i]-1].z);
+		glNormal3f(normals[faces[i + 2] - 1].x, normals[faces[i + 2] - 1].y, normals[faces[i + 2] - 1].z);
+		glTexCoord2f(texcords[faces[i + 1] - 1].x, texcords[faces[i + 1] - 1].y);
+		glVertex3f(vertices[faces[i] - 1].x, vertices[faces[i] - 1].y, vertices[faces[i] - 1].z);
 
-				glNormal3f(normals[faces[i + 5] - 1].x, normals[faces[i + 5] - 1].y, normals[faces[i + 5] - 1].z);
-				glTexCoord2f(texcords[faces[i + 4] - 1].x, texcords[faces[i + 4] - 1].y);
-				glVertex3f(vertices[faces[i+3]-1].x, vertices[faces[i+3]-1].y, vertices[faces[i+3]-1].z);
+		glNormal3f(normals[faces[i + 5] - 1].x, normals[faces[i + 5] - 1].y, normals[faces[i + 5] - 1].z);
+		glTexCoord2f(texcords[faces[i + 4] - 1].x, texcords[faces[i + 4] - 1].y);
+		glVertex3f(vertices[faces[i + 3] - 1].x, vertices[faces[i + 3] - 1].y, vertices[faces[i + 3] - 1].z);
 
-				glNormal3f(normals[faces[i + 8] - 1].x, normals[faces[i + 7] - 1].y, normals[faces[i + 7] - 1].z);
-				glTexCoord2f(texcords[faces[i + 7] - 1].x, texcords[faces[i + 7] - 1].y);
-				glVertex3f(vertices[faces[i+6]-1].x, vertices[faces[i+6]-1].y, vertices[faces[i+6]-1].z);
+		glNormal3f(normals[faces[i + 8] - 1].x, normals[faces[i + 8] - 1].y, normals[faces[i + 8] - 1].z);
+		glTexCoord2f(texcords[faces[i + 7] - 1].x, texcords[faces[i + 7] - 1].y);
+		glVertex3f(vertices[faces[i + 6] - 1].x, vertices[faces[i + 6] - 1].y, vertices[faces[i + 6] - 1].z);
 
-				
-			}
-		glEnd();
+
+
+	}
+	glEnd();
 	glPopMatrix();
 
 	//glBegin(GL_QUADS);
@@ -60,12 +61,12 @@ bool Model::LoadModel(char* filename)
 	//std::vector<unsigned int> faces;
 	FILE* file = fopen(filename, "r");
 	if (file == NULL)
-		{
-			return false;
-		}
+	{
+		return false;
+	}
 	while (true)
 	{
-		char lineHeader[128] = {0};
+		char lineHeader[128] = { 0 };
 		// Read first word of the line
 		int res = fscanf(file, "%s", lineHeader);
 		if (res == EOF)
